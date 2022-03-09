@@ -1,1 +1,74 @@
+gcc -g p3final.c
+ ./a.out
+Enter the value of n and r
+9 4
+9C4 is 126
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x833: file p3final.c, line 22.
+(gdb) r
+Starting program: /home/runner/Test3Session2-1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p3final.c:22
+22  {
+(gdb) n
+24    input_n_and_r(&n,&r);
+(gdb) s
+input_n_and_r (n=0x7fff6ca7abfc, r=0x7fff6ca7ac00) at p3final.c:5
+5     printf("Enter the value of n and r\n");
+(gdb) n
+Enter the value of n and r
+6     scanf("%d%d",n,r);
+(gdb) n
+9 4
+8   }
+(gdb) n
+main () at p3final.c:25
+25    result=ncr(n,r);
+(gdb) s
+ncr (n=9, r=4) at p3final.c:11
+11    if(r==0 || n==r)
+(gdb) n
+14      return ncr(n-1,r-1)+ncr(n-1,r);
+(gdb) n
+16  }
+(gdb) n
+main () at p3final.c:26
+26    output(n,r,result);
+(gdb) s
+output (n=9, r=4, result=126) at p3final.c:19
+19    printf("%dC%d is %d\n",n,r,result);
+(gdb) n
+9C4 is 126
+20  }
+(gdb) n
+main () at p3final.c:27
+27    return 0;
+(gdb) n
+28  }(gdb) p n
+$1 = 9
+(gdb) p r
+$2 = 4
+(gdb) p result
+$3 = 126
+(gdb) c
+Continuing.
+[Inferior 1 (process 785) exited normally]
+(gdb) q
+ 
